@@ -1,0 +1,169 @@
+/* ===========================================================
+   Sereno Psicologia — Global styles + Responsividade
+=========================================================== */
+
+*{ box-sizing:border-box }
+html,body{ margin:0; padding:0 }
+html{ scroll-behavior:smooth }
+body{
+  background:#F1EFE8;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  font-family:'Schibsted Grotesk',system-ui,sans-serif;
+  color:#2B2A26;
+}
+::selection{ background:#cdd9d2; color:#2B2A26 }
+a{ color:inherit; text-decoration:none }
+
+@keyframes floatA{ 0%,100%{ transform:translateY(0) rotate(0deg) } 50%{ transform:translateY(-26px) rotate(2deg) } }
+@keyframes floatB{ 0%,100%{ transform:translateY(0) rotate(0deg) } 50%{ transform:translateY(20px) rotate(-3deg) } }
+@keyframes drift{ 0%,100%{ transform:translate(0,0) } 33%{ transform:translate(26px,-18px) } 66%{ transform:translate(-18px,14px) } }
+@keyframes breathe{ 0%,100%{ transform:scale(1) } 50%{ transform:scale(1.06) } }
+@keyframes scrollcue{ 0%{ transform:translateY(0); opacity:0 } 30%{ opacity:1 } 100%{ transform:translateY(14px); opacity:0 } }
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation:none !important }
+}
+
+/* ===========================================================
+   TABLET — até 900px
+=========================================================== */
+@media (max-width: 900px) {
+
+  /* Nav: esconde links, mantém logo + botão */
+  [data-nav] [data-navlink] {
+    display: none;
+  }
+
+  /* Hero: empilha em coluna única */
+  #top > div[style*="grid-template-columns"] {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    min-height: unset !important;
+    gap: 48px !important;
+  }
+
+  /* foto sobe para o topo */
+  #top [data-reveal="right"] {
+    order: -1;
+    max-width: 280px !important;
+  }
+
+  /* Terapeuta (seção 05): empilha */
+  #therapist > div[style*="grid-template-columns"] {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 40px !important;
+  }
+
+  #therapist [data-reveal="left"] {
+    max-width: 300px !important;
+  }
+
+  /* FAQ (seção 06): empilha e remove sticky */
+  section > div[style*=".8fr 1.2fr"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 40px !important;
+  }
+
+  section [data-reveal="left"][style*="sticky"] {
+    position: static !important;
+  }
+
+  /* Footer: 2 colunas */
+  footer div[style*="1.4fr 1fr 1fr 1fr"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+/* ===========================================================
+   MOBILE — até 600px
+=========================================================== */
+@media (max-width: 600px) {
+
+  /* Nav: botão menor */
+  [data-nav] [data-cta] {
+  font-size: 12px !important;
+  padding: 8px 14px !important;
+  white-space: nowrap !important;
+  }
+
+  /* Esconde o cartão flutuante no mobile */
+ #top [style*="bottom:24px"] {
+  display: none !important;
+ }
+
+ /* Centraliza o texto do hero */  
+ #top > div > div:first-child {
+    text-align: center !important;
+  }
+
+  /* Centraliza os botões */
+  #top [data-reveal][style*="margin-top:42px"] {
+    justify-content: center !important;
+  }
+
+  /* Centraliza os badges */  
+  #top [data-reveal][style*="margin-top:54px"] {
+    justify-content: center !important;
+  }
+
+  /* Serviços: esconde blob decorativo */
+  [data-thumb] {
+    display: none !important;
+  }
+  /* Esconde os blobs decorativos do hero no mobile */
+ #top [data-parallax] {
+  display: none !important;
+ }
+
+ #top div[style*="animation:drift"] {
+  display: none !important;
+ }
+
+ #top div[style*="animation:floatB"] {
+  display: none !important;
+ } 
+
+  /* Approach: centraliza todos os cards */
+  [data-step] {
+    justify-content: center !important;
+  }
+
+  [data-step] > div {
+    max-width: 100% !important;
+  }
+
+  /* Linha meandering: esconde no mobile */
+  #approach svg {
+    display: none !important;
+  }
+
+  /* Terapeuta: foto menor */
+  #therapist [data-reveal="left"] {
+    max-width: 240px !important;
+  }
+  /* Seção 07 — Convite */
+  #invitation h2 {
+    font-size: clamp(1.6rem, 6vw, 2.2rem) !important;
+    line-height: 1.2 !important;
+  }
+
+  #invitation br {
+    display: none !important;
+}
+  /* Footer: 1 coluna */
+  footer div[style*="1.4fr 1fr 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  /* Rodapé inferior: empilha */
+  footer div[style*="justify-content:space-between"] {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+}
