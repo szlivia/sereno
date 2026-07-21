@@ -149,6 +149,20 @@ img, svg { max-width: 100%; height: auto; }
     white-space: nowrap !important;
   }
 
+  /* Logo + rótulo "Psicologia" + botão não cabem lado a lado em quase
+     nenhum celular — simplificamos o logo para "Sereno" + botão em
+     todo o mobile (não só nas telas muito estreitas). */
+  [data-nav-sub],
+  [data-nav-dot] {
+    display: none !important;
+  }
+
+  /* Rede de segurança: se ainda assim não couber, quebra em vez de sobrepor */
+  [data-nav] > div {
+    flex-wrap: wrap !important;
+    row-gap: 8px !important;
+  }
+
   /* Esconde o cartão flutuante no mobile (não cabe ao lado da foto reduzida) */
   [data-hero-card] {
     display: none !important;
@@ -249,14 +263,7 @@ img, svg { max-width: 100%; height: auto; }
 =========================================================== */
 @media (max-width: 380px) {
 
-  /* A nav com logo + "Psicologia" + botão não cabe em telas muito
-     estreitas: escondemos o subtítulo e o ponto separador, mantendo
-     só "Sereno" + botão de agendar. */
-  [data-nav-sub],
-  [data-nav-dot] {
-    display: none !important;
-  }
-
+  /* Em telas muito estreitas, encolhe ainda mais o botão de agendar */
   [data-nav] [data-cta] {
     font-size: 11px !important;
     padding: 7px 12px !important;
