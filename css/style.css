@@ -26,6 +26,16 @@ a{ color:inherit; text-decoration:none }
 }
 
 /* ===========================================================
+   SEGURANÇA GLOBAL — nunca deixar nada vazar horizontalmente
+=========================================================== */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+img, svg { max-width: 100%; height: auto; }
+
+/* ===========================================================
    TABLET — até 900px
 =========================================================== */
 @media (max-width: 900px) {
@@ -44,10 +54,24 @@ a{ color:inherit; text-decoration:none }
     gap: 48px !important;
   }
 
-  /* foto sobe para o topo */
+  /* foto sobe para o topo, com largura fluida (nunca fixa) */
   #top [data-reveal="right"] {
     order: -1;
+    width: min(280px, 60vw) !important;
     max-width: 280px !important;
+  }
+
+  /* o cartão flutuante com o nome fica parcialmente fora da foto:
+     no tablet, aproxima da borda para não ser cortado pelo overflow:hidden da section */
+  [data-hero-card] {
+    left: 4px !important;
+    bottom: 16px !important;
+  }
+
+  /* o blob decorativo atrás da foto também precisa recuar */
+  [data-hero-blob] {
+    left: -6% !important;
+    top: -20px !important;
   }
 
   /* Terapeuta (seção 05): empilha */
@@ -59,6 +83,7 @@ a{ color:inherit; text-decoration:none }
   }
 
   #therapist [data-reveal="left"] {
+    width: min(300px, 70vw) !important;
     max-width: 300px !important;
   }
 
@@ -84,21 +109,64 @@ a{ color:inherit; text-decoration:none }
 =========================================================== */
 @media (max-width: 600px) {
 
-  /* Nav: botão menor */
-  [data-nav] [data-cta] {
-  font-size: 12px !important;
-  padding: 8px 14px !important;
-  white-space: nowrap !important;
+  /* Altura do hero: sem a foto, o conteúdo é mais curto — usamos
+     altura automática (com respiro via padding) em vez de forçar
+     100vh/100svh, que deixaria um vazio grande abaixo do texto. */
+  #top {
+    min-height: unset !important;
+    padding-top: 120px !important;
+    padding-bottom: 70px !important;
   }
 
-  /* Esconde o cartão flutuante no mobile */
- #top [style*="bottom:24px"] {
-  display: none !important;
- }
+  #top > div[style*="grid-template-columns"] {
+    min-height: unset !important;
+    gap: 0 !important;
+  }
 
- /* Centraliza o texto do hero */  
- #top > div > div:first-child {
+  /* Remove a foto do hero no mobile: não agrega e só ocupa espaço */
+  #top [data-reveal="right"] {
+    display: none !important;
+  }
+
+  /* O indicador "Rolar" era posicionado para ficar no rodapé da tela
+     (bottom:30px de uma section com 100vh). Agora que a section tem
+     altura automática, ele fica colado no meio do conteúdo — melhor
+     escondê-lo no mobile. */
+  [data-scroll-cue] {
+    display: none !important;
+  }
+
+  /* Ativa a quebra de linha antes de "se reencontrar." só no mobile
+     (no desktop ela fica escondida e o texto flui normalmente) */
+  #top h1 [data-mobile-break] {
+    display: inline !important;
+  }
+
+  /* Nav: botão menor */
+  [data-nav] [data-cta] {
+    font-size: 12px !important;
+    padding: 8px 14px !important;
+    white-space: nowrap !important;
+  }
+
+  /* Esconde o cartão flutuante no mobile (não cabe ao lado da foto reduzida) */
+  [data-hero-card] {
+    display: none !important;
+  }
+
+  /* Centraliza o texto do hero */
+  #top > div > div:first-child {
     text-align: center !important;
+  }
+
+  /* Centraliza a linha do rótulo "01 — Um lugar para começar" (é flex, text-align não afeta) */
+  #top [data-reveal][style*="margin-bottom:30px"] {
+    justify-content: center !important;
+  }
+
+  /* remove a quebra de linha forçada do título, que fica estranha centralizada */
+  #top h1 br {
+    display: none !important;
   }
 
   /* Centraliza os botões */
@@ -106,7 +174,7 @@ a{ color:inherit; text-decoration:none }
     justify-content: center !important;
   }
 
-  /* Centraliza os badges */  
+  /* Centraliza os badges */
   #top [data-reveal][style*="margin-top:54px"] {
     justify-content: center !important;
   }
@@ -115,18 +183,23 @@ a{ color:inherit; text-decoration:none }
   [data-thumb] {
     display: none !important;
   }
+
   /* Esconde os blobs decorativos do hero no mobile */
- #top [data-parallax] {
-  display: none !important;
- }
+  #top [data-parallax] {
+    display: none !important;
+  }
 
- #top div[style*="animation:drift"] {
-  display: none !important;
- }
+  #top div[style*="animation:drift"] {
+    display: none !important;
+  }
 
- #top div[style*="animation:floatB"] {
-  display: none !important;
- } 
+  #top div[style*="animation:floatB"] {
+    display: none !important;
+  }
+
+  [data-hero-blob] {
+    display: none !important;
+  }
 
   /* Approach: centraliza todos os cards */
   [data-step] {
@@ -142,10 +215,12 @@ a{ color:inherit; text-decoration:none }
     display: none !important;
   }
 
-  /* Terapeuta: foto menor */
+  /* Terapeuta: foto menor e fluida */
   #therapist [data-reveal="left"] {
+    width: min(240px, 65vw) !important;
     max-width: 240px !important;
   }
+
   /* Seção 07 — Convite */
   #invitation h2 {
     font-size: clamp(1.6rem, 6vw, 2.2rem) !important;
@@ -154,7 +229,8 @@ a{ color:inherit; text-decoration:none }
 
   #invitation br {
     display: none !important;
-}
+  }
+
   /* Footer: 1 coluna */
   footer div[style*="1.4fr 1fr 1fr 1fr"] {
     grid-template-columns: 1fr !important;
@@ -165,5 +241,30 @@ a{ color:inherit; text-decoration:none }
   footer div[style*="justify-content:space-between"] {
     flex-direction: column !important;
     gap: 8px !important;
+  }
+}
+
+/* ===========================================================
+   MOBILE PEQUENO — até 380px (iPhone SE e similares)
+=========================================================== */
+@media (max-width: 380px) {
+
+  /* A nav com logo + "Psicologia" + botão não cabe em telas muito
+     estreitas: escondemos o subtítulo e o ponto separador, mantendo
+     só "Sereno" + botão de agendar. */
+  [data-nav-sub],
+  [data-nav-dot] {
+    display: none !important;
+  }
+
+  [data-nav] [data-cta] {
+    font-size: 11px !important;
+    padding: 7px 12px !important;
+  }
+
+  /* reduz um pouco o padding lateral das seções para dar mais respiro ao conteúdo */
+  section, nav > div {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
   }
 }

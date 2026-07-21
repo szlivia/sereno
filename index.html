@@ -22,10 +22,10 @@
 <!-- ============ NAV ============ -->
 <nav data-nav style="position:fixed;top:0;left:0;right:0;z-index:60;transition:background .5s ease, backdrop-filter .5s ease, box-shadow .5s ease">
   <div style="max-width:1280px;margin:0 auto;padding:14px clamp(24px,5vw,72px);display:flex;align-items:center;justify-content:space-between;gap:24px">
-    <a href="#top" style="display:flex;align-items:baseline;gap:10px">
+    <a href="#top" data-nav-logo style="display:flex;align-items:baseline;gap:10px;min-width:0">
       <span style="font-size:23px;font-weight:600;letter-spacing:-.02em">Sereno</span>
-      <span style="width:6px;height:6px;border-radius:50%;background:#93A7B2;align-self:center;display:inline-block"></span>
-      <span style="font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#8A887F;font-weight:500">Psicologia</span>
+      <span data-nav-dot style="width:6px;height:6px;border-radius:50%;background:#93A7B2;align-self:center;display:inline-block;flex-shrink:0"></span>
+      <span data-nav-sub style="font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:#8A887F;font-weight:500;white-space:nowrap">Psicologia</span>
     </a>
     <div style="display:flex;align-items:center;gap:clamp(20px,2.6vw,40px)">
       <a href="#approach" data-navlink style="font-size:15px;color:#5C5B54;font-weight:500;letter-spacing:.01em;position:relative;padding:4px 0">Abordagem<span data-und style="position:absolute;left:0;bottom:-1px;height:1.5px;width:0;background:#6E7E6B;transition:width .4s cubic-bezier(.22,.61,.36,1)"></span></a>
@@ -51,7 +51,7 @@
         <span style="width:34px;height:1px;background:rgba(43,42,38,.3)"></span>
         <span style="font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#8A887F;font-weight:500">Um lugar para começar</span>
       </div>
-      <h1 data-reveal data-delay="120" style="margin:0;font-size:clamp(1.8rem,3.8vw,3.2rem);line-height:1.03;letter-spacing:-.025em;font-weight:500;color:#2B2A26">Espaço para pensar,<br>sentir e <span style="font-family:'Newsreader',serif;font-style:italic;font-weight:400;color:#5E7682">se reencontrar.</span></h1>
+      <h1 data-reveal data-delay="120" style="margin:0;font-size:clamp(1.8rem,3.8vw,3.2rem);line-height:1.03;letter-spacing:-.025em;font-weight:500;color:#2B2A26">Espaço para pensar, <br>sentir e <br data-mobile-break style="display:none"><span style="font-family:'Newsreader',serif;font-style:italic;font-weight:400;color:#5E7682">se reencontrar.</span></h1>
       <p data-reveal data-delay="240" style="margin:34px 0 0;max-width:430px;font-size:18.5px;line-height:1.72;color:#5C5B54">Terapia individual e avaliação psicológica para adultos — sem pressa, confidencial e baseada em evidências. Onde quer que você esteja agora é um ponto de partida válido.</p>
       <div data-reveal data-delay="360" style="display:flex;align-items:center;gap:26px;margin-top:42px;flex-wrap:wrap">
         <a href="#invitation" data-fillbtn style="position:relative;font-size:16px;font-weight:600;color:#F1EFE8;background:#2B2A26;border-radius:40px;padding:16px 30px;overflow:hidden;transition:transform .4s ease"><span style="position:relative;z-index:2">Agendar uma primeira conversa</span><span data-fill style="position:absolute;inset:0;background:#5E7682;transform:translateY(101%);transition:transform .5s cubic-bezier(.22,.61,.36,1);z-index:1"></span></a>
@@ -66,17 +66,17 @@
 
     <!-- right column: portrait composition -->
     <div data-reveal="right" data-delay="200" style="position:relative;justify-self:center;width:100%;max-width:340px">
-      <div style="position:absolute;top:-30px;left:-40px;width:300px;height:300px;background:#cdd9d1;border-radius:63% 37% 54% 46% / 55% 48% 52% 45%;opacity:.7;z-index:0;animation:floatA 11s ease-in-out infinite"></div>
+      <div data-hero-blob style="position:absolute;top:-30px;left:-40px;width:300px;height:300px;background:#cdd9d1;border-radius:63% 37% 54% 46% / 55% 48% 52% 45%;opacity:.7;z-index:0;animation:floatA 11s ease-in-out infinite"></div>
       <div style="position:relative;z-index:1;aspect-ratio:4/5;border-radius:54% 46% 47% 53% / 60% 57% 43% 40%;overflow:hidden;box-shadow:0 30px 60px -28px rgba(60,72,68,.5)">
        <img src="assets/frame1.jpg" alt="Dra. Elena Marsh" style="width:100%;height:100%;object-fit:cover;display:block;">
       </div>
-      <div style="position:absolute;z-index:2;bottom:24px;left:-34px;background:#F1EFE8;border-radius:18px;padding:15px 19px;box-shadow:0 18px 40px -22px rgba(60,72,68,.55);display:flex;align-items:center;gap:13px;animation:floatB 9s ease-in-out infinite">
+      <div data-hero-card style="position:absolute;z-index:2;bottom:24px;left:-34px;background:#F1EFE8;border-radius:18px;padding:15px 19px;box-shadow:0 18px 40px -22px rgba(60,72,68,.55);display:flex;align-items:center;gap:13px;animation:floatB 9s ease-in-out infinite">
         <span style="width:38px;height:38px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#a9bbb1,#6E7E6B)"></span>
         <div style="line-height:1.3"><div style="font-size:13.5px;font-weight:600;color:#2B2A26">Dra. Elena Marsh</div><div style="font-size:11.5px;color:#8A887F">Psicóloga Clínica</div></div>
       </div>
     </div>
   </div>
-  <div style="position:absolute;left:50%;bottom:30px;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px">
+  <div data-scroll-cue style="position:absolute;left:50%;bottom:30px;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px">
     <span style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#a3a199">Rolar</span>
     <span style="width:1px;height:34px;background:rgba(43,42,38,.18);position:relative;overflow:hidden"><span style="position:absolute;top:0;left:0;width:1px;height:14px;background:#5E7682;animation:scrollcue 2.4s ease-in-out infinite"></span></span>
   </div>
@@ -242,7 +242,7 @@
   <div data-parallax="-0.05" style="position:absolute;bottom:-16%;right:-4%;width:480px;height:480px;background:radial-gradient(circle,#6E7E6B,transparent 70%);border-radius:50%;opacity:.45;z-index:0;animation:breathe 16s ease-in-out infinite"></div>
   <div style="position:relative;z-index:1;max-width:820px;margin:0 auto;text-align:center">
     <div data-reveal style="font-family:'Newsreader',serif;font-style:italic;font-size:15px;color:#a9bbb1;margin-bottom:26px">07 — Quando estiver pronto</div>
-    <h2 data-reveal data-delay="100" style="margin:0;font-size:clamp(2.3rem,5vw,4rem);line-height:1.08;letter-spacing:-.025em;font-weight:500">O primeiro passo é o<br>mais silencioso. <span style="font-family:'Newsreader',serif;font-style:italic;font-weight:400;color:#cdd9d1">Estamos aqui</span><br>quando você der.</h2>
+    <h2 data-reveal data-delay="100" style="margin:0;font-size:clamp(2.3rem,5vw,4rem);line-height:1.08;letter-spacing:-.025em;font-weight:500">O primeiro passo é o <br>mais silencioso. <span style="font-family:'Newsreader',serif;font-style:italic;font-weight:400;color:#cdd9d1">Estamos aqui</span> <br>quando você der.</h2>
     <p data-reveal data-delay="220" style="margin:30px auto 0;max-width:46ch;font-size:18px;line-height:1.72;color:#c4c2b8">Sem compromisso, sem roteiro a seguir. Só uma conversa curta e humana sobre o que te trouxe até aqui.</p>
     <div data-reveal data-delay="340" style="display:flex;align-items:center;justify-content:center;gap:22px;margin-top:44px;flex-wrap:wrap">
       <a href="#top" data-fillbtn style="position:relative;font-size:16px;font-weight:600;color:#2B2A26;background:#F1EFE8;border-radius:40px;padding:17px 34px;overflow:hidden;transition:transform .4s ease"><span style="position:relative;z-index:2">Agendar uma primeira conversa</span><span data-fill style="position:absolute;inset:0;background:#a9bbb1;transform:translateY(101%);transition:transform .5s cubic-bezier(.22,.61,.36,1);z-index:1"></span></a>
