@@ -142,6 +142,12 @@ img, svg { max-width: 100%; height: auto; }
     display: inline !important;
   }
 
+  /* Reduz um pouco o título no mobile para caber em 2 linhas:
+     "Espaço para pensar, sentir e" / "se reencontrar." */
+  #top h1 {
+    font-size: clamp(1.5rem, 7.5vw, 2.1rem) !important;
+  }
+
   /* Nav: botão menor */
   [data-nav] [data-cta] {
     font-size: 12px !important;
